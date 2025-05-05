@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 </head>
 <body>
     <button onclick="myFunction()"><i class="fa fa-moon-o"></i> Dark mode</button>
     <div class="container">
+        <div class="mode-selection">
+            <button onclick="startTwoPlayer()">Two Players</button>
+            <button onclick="startAI()">Play vs AI</button>
+        </div>
+        <div class="score-board">
+            <span id="xScore">X: 0</span>
+            <span id="oScore">O: 0</span>
+            <span id="drawScore">Draw: 0</span>
+        </div>
         <div id="board" class="board">
             <div class="cell" onclick="makeMove(0)"></div>
             <div class="cell" onclick="makeMove(1)"></div>
@@ -22,7 +31,16 @@
             <div class="cell" onclick="makeMove(8)"></div>
         </div>
         <div id="message" class="message"></div>
-        <button onclick="resetGame()">RESET</button>
+        <div class="game-controls">
+            <button onclick="resetGame()">Reset Game</button>
+            <button onclick="resetScores()">Reset Score</button>
+        </div>
+    </div>
+    <div id="winPopup" class="popup hidden">
+        <div class="popup-content">
+            <h2 id="winMessage">Congratulations!</h2>
+            <button onclick="closePopup()">Close</button>
+        </div>
     </div>
     <script src="script.js"></script>
     <script>
@@ -30,7 +48,6 @@
            var element = document.body;
            element.classList.toggle("dark-mode");
         }
-        </script>
-        
+    </script>
 </body>
 </html>
