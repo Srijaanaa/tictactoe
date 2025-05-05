@@ -1,61 +1,213 @@
 body {
-    background-color: white;
-    color: black;
-  }
-  
-  .dark-mode {
-    background-color: rgb(67, 64, 64);
-    color: rgb(150, 120, 120);
-  }
-  .dark-mode .cell{
-        border: 4px solid rgb(248, 239, 239);
-        box-shadow: inset 10px 10px 5px 4px rgb(55, 42, 42);
-    }
-    .dark-mode .board{
-        box-shadow: 20px 20px 10px 8px rgb(209, 205, 205);
-    }
-    .dark-mode .message{
-        color: white;
-    }
+    background: linear-gradient(135deg, #b3e5fc, #eceff1);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    transition: background 0.3s;
+}
+
+.dark-mode {
+    background: linear-gradient(135deg, #2c3e50, #1a1a1a), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect fill="%23ffffff10" x="0" y="0" width="100" height="100"/%3E%3Ccircle fill="%23ffffff20" cx="10" cy="10" r="2"/%3E%3Ccircle fill="%23ffffff15" cx="30" cy="30" r="1"/%3E%3Ccircle fill="%23ffffff25" cx="50" cy="50" r="1.5"/%3E%3Ccircle fill="%23ffffff10" cx="70" cy="70" r="2"/%3E%3Ccircle fill="%23ffffff20" cx="90" cy="90" r="1"/%3E%3C/svg%3E');
+    background-blend-mode: overlay;
+    color: #e0e0e0;
+}
+
+.dark-mode .cell {
+    background: linear-gradient(145deg, #333, #444);
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+.dark-mode .board {
+    background: linear-gradient(145deg, #222, #2c2c2c);
+}
+
+.dark-mode .message {
+    color: #e0e0e0;
+}
+
+.dark-mode .mode-selection button,
+.dark-mode .game-controls button {
+    background: linear-gradient(145deg, #26a69a, #00695c);
+    color: #e0e0e0;
+    border: none;
+}
+
+.dark-mode .mode-selection button:hover,
+.dark-mode .game-controls button:hover {
+    background: linear-gradient(145deg, #00695c, #004d40);
+}
+
+.dark-mode .score-board {
+    background: linear-gradient(145deg, #333, #444);
+}
+
+.dark-mode .popup-content {
+    background: linear-gradient(145deg, #2c2c2c, #333);
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    box-shadow: 20px 20px 10px 8px ;
+    gap: 8px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    padding: 10px;
+    border-radius: 12px;
+    transition: background 0.3s;
 }
-
 
 .cell {
     width: 100px;
     height: 100px;
-    background-color: #f9f9f9;
+    background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight: bold;
     cursor: pointer;
-    border: 4px solid rgb(107, 106, 106);
-    box-shadow: inset 10px 10px 5px 4px rgb(91, 84, 84);
-    font-family: cursive ;
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.1s;
 }
+
+.cell:hover {
+    background: linear-gradient(145deg, #e0e0e0, #c9c9c9);
+    transform: scale(1.05);
+}
+
 .message {
-    padding-top: 30px;
+    margin: 20px 0;
     font-size: 1.5em;
+    font-weight: 500;
+    transition: color 0.3s;
 }
-button{
-    margin : 15px;
-    padding: 15px;
-    border-radius: 20px;
+
+.game-controls {
+    display: flex;
+    gap: 15px;
 }
-button:hover{
-    font-size: 1.02em;
+
+button {
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: 600;
+    background: linear-gradient(145deg, #706bff, #d81b60);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #d81b60, #b0004c);
+    transform: scale(1.05);
+}
+
+.mode-selection {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.mode-selection button {
+    background: linear-gradient(145deg, #17a2b8, #117a8b);
+    padding: 10px 20px;
+}
+
+.mode-selection button:hover {
+    background: linear-gradient(145deg, #117a8b, #0c5f6e);
+}
+
+.score-board {
+    display: flex;
+    gap: 25px;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 300px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.popup-content h2 {
+    margin: 0 0 20px;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.dark-mode .popup-content h2 {
+    color: #e0e0e0;
+}
+
+.popup-content button {
+    margin-top: 10px;
+}
+
+@media (max-width: 400px) {
+    .board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 6px;
+    }
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2em;
+    }
+    .message {
+        font-size: 1.2em;
+    }
+    .score-board {
+        font-size: 1em;
+        gap: 15px;
+    }
+    .popup-content {
+        max-width: 250px;
+    }
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+    }
 }
